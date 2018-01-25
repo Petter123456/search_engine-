@@ -2,4 +2,11 @@
 <p>Find me in app/views/site/search.html.erb</p>
 
 
-<input type="text" name="">
+
+
+
+
+<%= form_tag site_search_path do %>
+  <%= search_field_tag :term %>
+  <%= submit_tag "search" %>
+<% end %>

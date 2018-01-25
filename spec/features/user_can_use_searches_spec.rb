@@ -5,7 +5,7 @@ RSpec.feature "user can use search", type: :feature do
   describe "goes to homepage" do
     it "should have a search field" do
       visit '/'
-      expect(page).to have_selector("input")
+      expect(page).to have_selector("input#term")
     end
   end
 end
