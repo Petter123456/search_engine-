@@ -1,12 +1,15 @@
-<h1>Site#search</h1>
-<p>Find me in app/views/site/search.html.erb</p>
-
-
-
-
-
+<h1>Search</h1>
 
 <%= form_tag site_search_path do %>
   <%= search_field_tag :term %>
   <%= submit_tag "search" %>
+<% end %>
+
+
+<h2>Results</h2>
+
+<% if params[:term] %>
+  <% @artist.each do |artist| %>
+    <p class="search-results "><%= artist.name%></p>
+  <% end %>
 <% end %>
