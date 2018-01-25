@@ -5,8 +5,9 @@ RSpec.feature "user can use search", type: :feature do
   describe "goes to homepage" do
 
   before do
-    Artist.create(name: "drdre")
     Artist.create(name: "The Doors")
+    Artist.create(name: "drdre")
+
 
   end
 
@@ -25,14 +26,20 @@ RSpec.feature "user can use search", type: :feature do
       visit '/'
       fill_in 'term', with: "The Doors"
       click_on 'search'
-      expect(page).to_ have_content("The Doors")
+      expect(page).to have_content("The Doors")
       expect(page).to_not have_content(Artist.last.name)
-
     end
 
   it "should not have any result when first visited" do
       visit '/'
       expect(page).to_not have_selector("p.search-results")
+    end
+  #
+  it "searching for an artist provides results independent of capitalization" do
+    visit '/'
+    fill_in 'term', with: "the doors"
+    click_on 'search'
+    expect(page).to have_content("The Doors")
     end
   end
 end
